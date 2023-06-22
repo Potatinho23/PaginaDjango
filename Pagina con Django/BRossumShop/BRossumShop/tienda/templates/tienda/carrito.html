@@ -1,0 +1,58 @@
+{% extends 'tienda/base.html' %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'tienda/'%}css/style_carrito.css"/>
+{% endblock css %}
+
+
+{% block contenido %}
+<div class="container-fluid text-light p-3">
+    <div class="row mt-3">
+        <div class="col-lg-8 ">
+            <h2>Carrito de Compras</h2>
+            <button id="enviar" class="btn btn-primary">Agregar Producto</button>
+            <br>
+            <div class="scrollable-div carrito" data-bs-spy="scrollSpy">
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h2>Total de Compra</h2>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>Total:</h4>
+                <h4 id="total">$0.00</h4>
+            </div>
+            <button class="btn btn-success btn-block mt-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Comprar</button>
+            <a href="{% url 'producto' %}"><button class="btn btn-secondary btn-block mt-3">Seguir
+                    Comprando</button></a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Compra</h1>
+                <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Su compra se ha realizado con éxito
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Ir a mis pedidos</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
+
+{% block javascript %}
+<script src="{% static 'tienda/'%}js/carrito.js"></script>
+{% endblock javascript %}
